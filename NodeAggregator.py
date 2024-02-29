@@ -4,7 +4,7 @@ from torch.autograd import Variable
 import math
 import torch.nn.functional as F
 
-class NodeMeanAggregator(nn.Module):
+class MeanAggregator(nn.Module):
     """
     Aggregates a node's embeddings using mean of its hyperedges embeddings
     """
@@ -16,7 +16,7 @@ class NodeMeanAggregator(nn.Module):
         node2hyperedges -- dictionnary (key: node name, value: list of hyperedges containing the node)
         """
 
-        super(NodeMeanAggregator, self).__init__()
+        super(MeanAggregator, self).__init__()
 
         self.hyperedges_embedding = hyperedges_embedding
         self.node2hyperedges = node2hyperedges
@@ -31,7 +31,7 @@ class NodeMeanAggregator(nn.Module):
             nodes=nodes.tolist()
         #print('nodes to compute in node mean agg', nodes)
         #print('nodes size', len(nodes))
-        #print("node2hyperedges =", self.node2hyperedges)
+        print("node2hyperedges =", self.node2hyperedges)
 
         hyperedges_lists = [self.node2hyperedges[node] for node in nodes]
         #print('neighbors lists', neighbors_lists)
@@ -63,7 +63,7 @@ class NodeMeanAggregator(nn.Module):
         #print('end hyp agg')
         return agg_feats
 
-class NodeMaxAggregator(nn.Module):
+class MaxAggregator(nn.Module):
     """
     Aggregates a node's embeddings using max of its hyperedges embeddings
     """
@@ -75,7 +75,7 @@ class NodeMaxAggregator(nn.Module):
         node2hyperedges -- dictionnary (key: node name, value: list of hyperedges containing the node)
         """
 
-        super(NodeMaxAggregator, self).__init__()
+        super(MaxAggregator, self).__init__()
 
         self.hyperedges_embedding = hyperedges_embedding
         self.node2hyperedges = node2hyperedges

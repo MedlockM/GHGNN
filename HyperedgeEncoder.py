@@ -83,4 +83,4 @@ print(len(hyp2nodes))
 hypere_features = nn.Embedding(len(hyp2nodes), 2)
 hypere_features.weight = nn.Parameter(torch.zeros(len(hyp2nodes), 2))
 enc = HyperedgeEncoder(2, 3, MA, hypere_features)
-print(enc.compute(["0", "1"]))'''
+print(enccompute_aggregation(["0", "1"]))'''
